@@ -19,8 +19,6 @@ class CheckAdmin
     {
         if(Auth::user()->admin == 0)
         {
-            // Auth::logout();
-            // return response('Unauthorize');
             Auth::logout();
             return back()->with('error', 'Unauthorized, You Are Not Admin.');
         }

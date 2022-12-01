@@ -14,7 +14,7 @@ class TaskControllerApi extends Controller
         $request->validate([
             'title'=>'required|min:3|max:255',
             'description'=>'required',
-            // 'user'=>'required',
+            'user'=>'required',
         ]);
 
         $task = Task::create([
