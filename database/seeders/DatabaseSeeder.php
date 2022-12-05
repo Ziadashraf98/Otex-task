@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,9 +19,6 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->delete();
         
-        $this->call(AdminSeeder::class);
-        
-        User::factory(300)->create();
-        // User::factory(10000)->create();
+        $this->call([AdminSeeder::class , UserSeeder::class]);
     }
 }
