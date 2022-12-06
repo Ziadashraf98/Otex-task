@@ -17,12 +17,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-
 Auth::routes(['register'=>false]);
-Route::get('/admin', [HomeController::class, 'index'])->middleware(CheckAdmin::class);
+Route::get('/', [HomeController::class, 'index'])->middleware(CheckAdmin::class);
 
 Route::controller(TaskController::class)->group(function()
 {
