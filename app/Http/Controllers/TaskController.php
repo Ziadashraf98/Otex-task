@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CheckAdmin;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -9,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth' , CheckAdmin::class]);
+    }
+
     public function tasks()
     {
         $tasks = Task::latest()->paginate(10);
