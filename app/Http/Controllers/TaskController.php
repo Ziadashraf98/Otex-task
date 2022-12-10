@@ -17,7 +17,7 @@ class TaskController extends Controller
 
     public function tasks()
     {
-        $tasks = Task::latest()->paginate(10);
+        $tasks = Task::paginate(10);
         return view('admin.all_tasks' , compact('tasks'));
     }
 
