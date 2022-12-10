@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth' , CheckAdmin::class]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth' , CheckAdmin::class]);
+    // }
 
     public function tasks()
     {

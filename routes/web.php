@@ -18,12 +18,15 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes(['register'=>false]);
-Route::get('/', [HomeController::class, 'index'])->middleware(CheckAdmin::class);
+Route::get('/', [HomeController::class, 'index'])->middleware(['auth' , CheckAdmin::class]);
 
-Route::controller(TaskController::class)->group(function()
-{
+
+Route::group(['middleware'=>['auth' , CheckAdmin::class]] , function () {
+    Route::controller(TaskController::class)->group(function() {
+
     Route::get('/All_Tasks' , 'tasks')->name('tasks');
     Route::get('/task_form' , 'task_form')->name('task_form');
     Route::post('/add_task' , 'add_task')->name('add_task');
     Route::get('/tasks_stats' , 'tasks_stats')->name('tasks_stats');
+});
 });
